@@ -1,0 +1,56 @@
+{
+  "indexUid": "courses",
+  "primaryKey": "id",
+  "searchableAttributes": [
+    "title",
+    "description",
+    "provider",
+    "categories",
+    "language"
+  ],
+  "displayedAttributes": [
+    "id",
+    "title",
+    "description",
+    "provider",
+    "thumbnail_url",
+    "url",
+    "price",
+    "currency",
+    "level",
+    "is_free",
+    "rating",
+    "ratings_count",
+    "language",
+    "duration_hours",
+    "published_at",
+    "categories"
+  ],
+  "filterableAttributes": [
+    "provider",
+    "categories",
+    "level",
+    "is_free",
+    "price",
+    "language",
+    "published_at"
+  ],
+  "sortableAttributes": [
+    "price",
+    "rating",
+    "ratings_count",
+    "published_at",
+    "duration_hours",
+    "title"
+  ],
+  "rankingRules": [
+    "words",
+    "typo",
+    "proximity",
+    "attribute",
+    "sort",
+    "exactness"
+  ],
+  "pagination": { "maxTotalHits": 1000 },
+  "typoTolerance": { "enabled": true }
+}
