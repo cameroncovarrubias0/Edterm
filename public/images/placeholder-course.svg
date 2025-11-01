@@ -1,0 +1,26 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder image">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f3ff"/>
+      <stop offset="100%" stop-color="#e7ecff"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#5c3bfe" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#9c7bff" stop-opacity="0.75"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)" rx="24"/>
+  <rect x="80" y="92" width="1040" height="491" rx="32" fill="white" stroke="#d9ddf8" stroke-width="2" stroke-dasharray="16 16"/>
+  <g transform="translate(600 337.5)" text-anchor="middle" fill="#5c3bfe">
+    <circle cx="0" cy="-40" r="64" fill="url(#accent)" opacity="0.15"/>
+    <path d="M-32-8h64v48h-64z" fill="#dadcff"/>
+    <path d="M-20-12h40l20 32h-80z" fill="#c3c6ff"/>
+    <circle cx="0" cy="-58" r="12" fill="#ffffff" stroke="#5c3bfe" stroke-width="4"/>
+    <text x="0" y="62" font-family="'Inter', 'Segoe UI', sans-serif" font-size="28" fill="#5c3bfe" font-weight="600">
+      Image not available
+    </text>
+    <text x="0" y="98" font-family="'Inter', 'Segoe UI', sans-serif" font-size="20" fill="#7a7f9e">
+      Content will appear here
+    </text>
+  </g>
+</svg>
