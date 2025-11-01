@@ -8,8 +8,7 @@ const supabase = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-const resendApiKey = 're_8Ut4xGPY_8hhGZYBG8ijLRdgFhmuh1VHj';
-// const resendApiKey = process.env.RESEND_API_KEY;
+const resendApiKey = process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
 
 const SubmissionSchema = z.object({
