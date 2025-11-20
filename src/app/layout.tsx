@@ -1,8 +1,9 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { Inter } from 'next/font/google';
+import Link from 'next/link';
 import FallbackImage from '@/components/fallback-image';
+import HeaderNav from '@/components/header-nav';
 
 export const metadata: Metadata = {
   title: 'EdTerm — Where Human Wisdom Meets AI Evolution',
@@ -20,7 +21,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={`${inter.className} min-h-screen flex flex-col`}>
         <header className='sticky top-0 z-50 border-b bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70'>
-          <div className='section flex items-center justify-between py-4'>
+          <div className='section flex items-center justify-between gap-4 py-4'>
             <Link
               href='/'
               aria-label='EdTerm Home'
@@ -35,26 +36,7 @@ export default function RootLayout({
                 className='h-8 w-auto'
               />
             </Link>
-            <nav className='flex flex-wrap items-center gap-3 text-sm md:flex-nowrap md:gap-6'>
-              <Link href='/' className='hover:underline'>
-                Home
-              </Link>
-              <Link href='/courses' className='hover:underline'>
-                Courses
-              </Link>
-              <Link href='/blog' className='hover:underline'>
-                Blog
-              </Link>
-              <Link href='/partners' className='hover:underline'>
-                Partner
-              </Link>
-              <Link
-                href='/courses'
-                className='rounded-2xl bg-brand-accent px-4 py-2 text-white transition hover:opacity-90'
-              >
-                Explore Course
-              </Link>
-            </nav>
+            <HeaderNav />
           </div>
         </header>
 
@@ -76,8 +58,14 @@ export default function RootLayout({
                 <Link href='/foundation' className='hover:underline'>
                   Foundation
                 </Link>
+                <Link href='/mentors' className='hover:underline'>
+                  Mentors
+                </Link>
                 <Link href='/partners' className='hover:underline'>
                   Partners
+                </Link>
+                <Link href='/privacy' className='hover:underline'>
+                  Privacy
                 </Link>
                 <a href='mailto:partners@edterm.com' className='hover:underline'>
                   Contact

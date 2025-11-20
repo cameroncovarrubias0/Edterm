@@ -13,8 +13,18 @@ import { Card } from '@/components/ui/card';
 const Schema = z.object({
   name: z.string().min(2, 'Please share your full name.'),
   email: z.string().email('A valid email helps us reply quickly.'),
-  country: z.string().optional(),
-  message: z.string().optional(),
+  expertise: z.string().min(2, 'Let us know your primary area of expertise.'),
+  experienceYears: z.coerce
+    .number()
+    .int()
+    .min(0, 'Enter your total years of experience.')
+    .max(80, 'Please enter a realistic number of years.'),
+  linkedin: z
+    .union([z.string().url('Add a valid LinkedIn URL.'), z.literal('')])
+    .optional(),
+  message: z
+    .string()
+    .min(20, 'Share a short note about why you would like to mentor.'),
 });
 
 type MentorFormValues = z.infer<typeof Schema>;
@@ -30,7 +40,9 @@ export default function MentorForm() {
     defaultValues: {
       name: '',
       email: '',
-      country: '',
+      expertise: '',
+      experienceYears: undefined as unknown as number,
+      linkedin: '',
       message: '',
     },
   });
@@ -42,12 +54,21 @@ export default function MentorForm() {
     setError(null);
     setSuccess(false);
 
+    const payload = {
+      name: values.name,
+      email: values.email,
+      expertise: values.expertise,
+      experience_years: values.experienceYears,
+      linkedin: values.linkedin?.trim() ? values.linkedin.trim() : null,
+      message: values.message,
+    };
+
     const res = await fetch('/api/mentor-submissions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(values),
+      body: JSON.stringify(payload),
     });
 
     if (!res.ok) {
@@ -61,7 +82,14 @@ export default function MentorForm() {
     }
 
     setSuccess(true);
-    reset();
+    reset({
+      name: '',
+      email: '',
+      expertise: '',
+      experienceYears: undefined as unknown as number,
+      linkedin: '',
+      message: '',
+    });
   };
 
   return (
@@ -93,30 +121,64 @@ export default function MentorForm() {
           {errors.email && <p className='small mt-1 text-red-600'>{errors.email.message}</p>}
         </div>
         <div>
-          <label htmlFor='mentor-country' className='mb-1 block text-sm font-medium text-black'>
-            Country (optional)
+          <label htmlFor='mentor-expertise' className='mb-1 block text-sm font-medium text-black'>
+            Area of expertise
           </label>
           <Input
-            id='mentor-country'
-            placeholder='e.g. Pakistan'
-            autoComplete='country-name'
-            {...register('country')}
+            id='mentor-expertise'
+            placeholder='e.g. Urban planning, Special education, Agriculture'
+            autoComplete='organization-title'
+            {...register('expertise')}
           />
+          {errors.expertise && <p className='small mt-1 text-red-600'>{errors.expertise.message}</p>}
+        </div>
+        <div>
+          <label
+            htmlFor='mentor-experience'
+            className='mb-1 block text-sm font-medium text-black'
+          >
+            Years of experience
+          </label>
+          <Input
+            id='mentor-experience'
+            type='number'
+            min={0}
+            max={80}
+            placeholder='Select the closest number'
+            {...register('experienceYears')}
+          />
+          {errors.experienceYears && (
+            <p className='small mt-1 text-red-600'>{errors.experienceYears.message}</p>
+          )}
+        </div>
+        <div>
+          <label htmlFor='mentor-linkedin' className='mb-1 block text-sm font-medium text-black'>
+            LinkedIn (optional)
+          </label>
+          <Input
+            id='mentor-linkedin'
+            type='url'
+            placeholder='https://www.linkedin.com/in/yourprofile'
+            autoComplete='url'
+            {...register('linkedin')}
+          />
+          {errors.linkedin && <p className='small mt-1 text-red-600'>{errors.linkedin.message}</p>}
         </div>
         <div>
           <label htmlFor='mentor-message' className='mb-1 block text-sm font-medium text-black'>
-            Notes or context (optional)
+            Message or motivation
           </label>
           <Textarea
             id='mentor-message'
             rows={4}
-            placeholder='Share a little about your background or interests.'
+            placeholder='Share why you want to support Shell-less Mentors and the communities you care about.'
             {...register('message')}
           />
+          {errors.message && <p className='small mt-1 text-red-600'>{errors.message.message}</p>}
         </div>
         <div className='flex items-center gap-3'>
           <Button type='submit' disabled={isSubmitting}>
-            {isSubmitting ? 'Submitting…' : 'Join the mentor list'}
+            {isSubmitting ? 'Submitting…' : 'Submit interest'}
           </Button>
           {error && <p className='small text-red-600'>{error}</p>}
         </div>
@@ -124,7 +186,8 @@ export default function MentorForm() {
       {success && (
         <Card className='mt-4 rounded-2xl border border-brand-accent/20 bg-brand-accent/10 p-4'>
           <p className='small text-brand-accent'>
-            Thanks! We&apos;ve stored your details and alerted the EdTerm team. Expect a reply soon.
+            Thank you! Your submission is now in our mentor_submissions table and the partnerships
+            team has been notified via email. Expect a response within three business days.
           </p>
         </Card>
       )}
