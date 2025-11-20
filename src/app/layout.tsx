@@ -1,6 +1,5 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import FallbackImage from '@/components/fallback-image';
 import HeaderNav from '@/components/header-nav';
@@ -10,7 +9,6 @@ export const metadata: Metadata = {
   description:
     'EdTerm blends adaptive AI mentorship with human wisdom to create accessible, lifelong learning pathways.',
 };
-const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -19,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body className='min-h-screen flex flex-col font-sans'>
         <header className='sticky top-0 z-50 border-b bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70'>
           <div className='section flex items-center justify-between gap-4 py-4'>
             <Link

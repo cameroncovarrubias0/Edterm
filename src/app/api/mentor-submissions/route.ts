@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     try {
       await resend.emails.send({
         from: 'EdTerm Notifications <partners@edterm.com>',
-        to: ['moidkhanmsg@gmail.com'],
+        to: ['partners@edterm.com'],
         subject: 'New Mentor Submission – Shell-less Mentors Program',
         html: `
           <div style="font-family:Arial, sans-serif; line-height:1.6; color:#0f172a;">

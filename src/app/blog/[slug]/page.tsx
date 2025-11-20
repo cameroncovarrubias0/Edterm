@@ -6,15 +6,16 @@ import FallbackImage from '@/components/fallback-image';
 import { blogPosts } from '@/data/blog-posts';
 
 type BlogPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
   return blogPosts.map(({ slug }) => ({ slug }));
 }
 
-export function generateMetadata({ params }: BlogPageProps): Metadata {
-  const post = blogPosts.find(({ slug }) => slug === params.slug);
+export async function generateMetadata({ params }: BlogPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = blogPosts.find((item) => item.slug === slug);
   if (!post) {
     return {
       title: 'Blog post not found — Education Terminal',
@@ -27,8 +28,9 @@ export function generateMetadata({ params }: BlogPageProps): Metadata {
   };
 }
 
-export default function BlogPostPage({ params }: BlogPageProps) {
-  const post = blogPosts.find(({ slug }) => slug === params.slug);
+export default async function BlogPostPage({ params }: BlogPageProps) {
+  const { slug } = await params;
+  const post = blogPosts.find((item) => item.slug === slug);
 
   if (!post) {
     notFound();

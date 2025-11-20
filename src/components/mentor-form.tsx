@@ -14,11 +14,14 @@ const Schema = z.object({
   name: z.string().min(2, 'Please share your full name.'),
   email: z.string().email('A valid email helps us reply quickly.'),
   expertise: z.string().min(2, 'Let us know your primary area of expertise.'),
-  experienceYears: z.coerce
+  experienceYears: z
     .number()
-    .int()
-    .min(0, 'Enter your total years of experience.')
-    .max(80, 'Please enter a realistic number of years.'),
+    .refine(
+      (val) => Number.isFinite(val) && Number.isInteger(val),
+      'Enter your total years of experience.'
+    )
+    .min(0, { message: 'Enter your total years of experience.' })
+    .max(80, { message: 'Please enter a realistic number of years.' }),
   linkedin: z
     .union([z.string().url('Add a valid LinkedIn URL.'), z.literal('')])
     .optional(),
@@ -41,7 +44,7 @@ export default function MentorForm() {
       name: '',
       email: '',
       expertise: '',
-      experienceYears: undefined as unknown as number,
+      experienceYears: undefined,
       linkedin: '',
       message: '',
     },
@@ -86,7 +89,7 @@ export default function MentorForm() {
       name: '',
       email: '',
       expertise: '',
-      experienceYears: undefined as unknown as number,
+      experienceYears: undefined,
       linkedin: '',
       message: '',
     });
@@ -145,7 +148,7 @@ export default function MentorForm() {
             min={0}
             max={80}
             placeholder='Select the closest number'
-            {...register('experienceYears')}
+            {...register('experienceYears', { valueAsNumber: true })}
           />
           {errors.experienceYears && (
             <p className='small mt-1 text-red-600'>{errors.experienceYears.message}</p>
