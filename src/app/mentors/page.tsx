@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { Card } from '@/components/ui/card';
 import MentorForm from '@/components/mentor-form';
 
 export const metadata: Metadata = {
   title: 'Shell-less Mentors | EdTerm',
   description:
-    'Join EdTerm’s Shell-less Mentors program and pass on your expertise to lifelong learners across the globe.',
+    'Contribute your experience to EdTerm’s Human Wisdom Database for Tero and keep guidance human for future generations.',
   keywords: [
     'Shell-less Mentors',
     'EdTerm mentors',
@@ -20,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Shell-less Mentors | EdTerm',
     description:
-      'Fuel the Human Wisdom Engine by guiding learners through pivotal choices with your lived experience.',
+      'Contribute your lived experience to Tero’s Human Wisdom Database so guidance stays human for generations.',
     url: 'https://edterm.com/mentors',
     type: 'website',
   },
@@ -33,27 +32,20 @@ const steps = [
       'Tell us what industries, communities, or missions you have served. Your lived experiences matter most.',
   },
   {
-    title: 'Match with learners',
-    detail:
-      'We route requests that align with your values, making each session purposeful whether it is live or async.',
+    title: 'Match with needs',
+    detail: 'We route prompts and requests that align with your values so your advice stays focused.',
   },
   {
-    title: 'Capture wisdom',
+    title: 'Capture wisdom for Tero',
     detail:
-      'Conversations and insights are distilled into EdTerm’s Human Wisdom Engine so more learners benefit.',
+      'Your guidance fuels the Human Wisdom Database so future learners benefit from authentic experience.',
   },
 ];
 
-const mentorBenefits = [
-  'Flexible scheduling that respects retirement, travel, or service commitments.',
-  'Cohort briefings, facilitation prompts, and reflection tools to keep sessions impactful.',
-  'Stipends or donations routed to missions you care about for select activations.',
-];
-
-const learnerBenefits = [
-  'Ground advice in decades of frontline experience, not generic internet scripts.',
-  'Receive asynchronous notes or real-time guidance tailored to age, region, and ambition.',
-  'Build confidence by hearing how veterans, builders, and educators navigated similar obstacles.',
+const whyItMatters = [
+  'Tero learns from verified human experience, not scraped content.',
+  'Learners receive grounded guidance that respects culture and context.',
+  'Your stories are preserved so the next generation can build with real wisdom.',
 ];
 
 export default function MentorsPage() {
@@ -65,46 +57,35 @@ export default function MentorsPage() {
             <p className='small font-semibold uppercase tracking-[0.3em] text-brand-accent'>
               Shell-less Mentors Program
             </p>
-            <h1 className='h1 mt-3 text-balance'>Teach without a classroom. Lead without a shell.</h1>
+            <h1 className='h1 mt-3 text-balance'>Fuel the Human Wisdom Database for Tero.</h1>
             <p className='p mx-auto mt-4 max-w-2xl md:mx-0'>
-              EdTerm pairs veterans, retired professionals, and lifelong experts with learners who
-              need grounded advice. Every mentoring moment captures practical wisdom that powers the
-              Human Wisdom Engine inside Tero.
+              EdTerm captures lived expertise from veterans, retired professionals, and lifelong
+              experts. Your submission feeds Tero’s Human Wisdom Database so guidance stays human,
+              contextual, and ready for generations to come.
             </p>
-            <div className='mt-6 grid gap-4 sm:grid-cols-2'>
-              {[
-                'Mentors guide critical decisions across careers, civic action, and wellbeing.',
-                'Learners worldwide gain culturally aware advice that keeps AI guidance human.',
-              ].map((item) => (
+            <div className='mt-6 grid gap-3 text-sm text-brand-muted'>
+              {whyItMatters.map((item) => (
                 <Card
                   key={item}
-                  className='rounded-2xl border border-brand-accent/20 bg-white/80 p-4 text-sm text-brand-muted'
+                  className='rounded-2xl border border-brand-accent/20 bg-white/80 p-4 text-left'
                 >
                   {item}
                 </Card>
               ))}
             </div>
-            <div className='mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start'>
-              <Link
-                href='/partners'
-                className='inline-flex rounded-full border border-transparent bg-brand-accent px-6 py-3 font-semibold text-white transition hover:opacity-90'
-              >
-                Explore Partner Models
-              </Link>
-              <Link href='/foundation' className='small text-brand-accent hover:underline'>
-                Learn about the Foundation
-              </Link>
-            </div>
           </div>
-          <Card className='mx-auto flex h-full min-h-[260px] w-full max-w-md flex-col justify-center rounded-3xl border border-dashed border-black/10 bg-white/90 p-8 text-left shadow-sm md:max-w-none'>
+          <Card className='mx-auto flex h-full min-h-[260px] w-full max-w-md flex-col justify-center rounded-3xl border border-black/10 bg-white/95 p-8 text-left shadow-sm md:max-w-none'>
             <p className='text-sm font-semibold uppercase tracking-wide text-brand-accent'>
-              Program Snapshot
+              What happens with your submission
             </p>
-            <ul className='mt-4 space-y-3 text-sm text-brand-muted'>
-              <li>✔️ 3,400+ mentor hours captured in 2024 pilots</li>
-              <li>✔️ Supabase stores all submissions; Resend alerts the team instantly</li>
-              <li>✔️ Focus on underserved regions and mission-aligned communities</li>
-            </ul>
+            <p className='mt-3 text-sm text-brand-muted'>
+              We review, structure, and add your experience to the Human Wisdom Database powering
+              Tero. It keeps answers grounded in real lives—not scraped web content—while preserving
+              attribution.
+            </p>
+            <p className='mt-4 text-sm text-brand-muted'>
+              Ready to contribute? Share your details below. It is streamlined and call-free.
+            </p>
           </Card>
         </div>
       </section>
@@ -113,8 +94,8 @@ export default function MentorsPage() {
         <div className='text-center md:text-left'>
           <h2 className='h2'>How it works</h2>
           <p className='p mt-2 max-w-3xl'>
-            The Shell-less Mentors pipeline makes it easy to share your story once and impact
-            hundreds of learners through facilitated sessions and curated knowledge drops.
+            A simple path to add your experience to the Human Wisdom Database. No scheduling calls—
+            just your expertise captured and put to work.
           </p>
         </div>
         <div className='grid gap-6 md:grid-cols-3'>
@@ -128,48 +109,23 @@ export default function MentorsPage() {
         </div>
       </section>
 
-      <section className='section grid gap-8 lg:grid-cols-2'>
-        <Card className='rounded-3xl border border-brand-accent/20 bg-brand-accent/5 p-8 shadow-sm'>
-          <h2 className='h2'>Benefits for mentors</h2>
-          <ul className='mt-4 space-y-4 text-sm text-brand-muted'>
-            {mentorBenefits.map((benefit) => (
-              <li key={benefit} className='flex items-start gap-3'>
-                <span className='mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-accent' />
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
-        <Card className='rounded-3xl border border-black/5 bg-white/90 p-8 shadow-sm'>
-          <h2 className='h2'>Benefits for learners</h2>
-          <ul className='mt-4 space-y-4 text-sm text-brand-muted'>
-            {learnerBenefits.map((benefit) => (
-              <li key={benefit} className='flex items-start gap-3'>
-                <span className='mt-1 inline-block h-2.5 w-2.5 rounded-full bg-brand-accent' />
-                <span>{benefit}</span>
-              </li>
-            ))}
-          </ul>
-        </Card>
-      </section>
-
       <section className='section'>
         <div className='grid gap-12 rounded-3xl border border-black/5 bg-white/90 px-6 py-10 shadow-sm md:grid-cols-[1.05fr_.95fr] md:px-10 md:py-12'>
           <div className='text-center md:text-left'>
             <h2 className='h2 text-balance'>Join the Shell-less Mentor roster</h2>
             <p className='p mx-auto mt-4 max-w-2xl md:mx-0'>
-              Complete the form and our partnerships team will review your experience before
-              scheduling a welcome call. Submissions are saved to the Supabase{' '}
+              Complete the form to add your expertise to the Human Wisdom Database. Submissions are
+              saved to the Supabase{' '}
               <code className='rounded bg-black/5 px-2 py-1 text-xs font-semibold'>mentor_submissions</code>{' '}
               table and trigger an email notification via Resend to partners@edterm.com for rapid
-              follow up.
+              inclusion.
             </p>
             <div className='mt-6 grid gap-3 text-sm text-brand-muted'>
               <div className='rounded-2xl border border-dashed border-brand-accent/30 bg-brand-accent/5 px-4 py-3'>
                 Ideal for veterans, accomplished parents, teachers, social innovators, and builders.
               </div>
               <div className='rounded-2xl border border-dashed border-brand-accent/30 bg-brand-accent/5 px-4 py-3'>
-                Sessions can be virtual, asynchronous, or embedded in on-the-ground activations.
+                Contributions can be live, asynchronous, or shared as written reflections.
               </div>
             </div>
           </div>

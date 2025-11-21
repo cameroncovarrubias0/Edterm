@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className='min-h-screen flex flex-col font-sans'>
         <header className='sticky top-0 z-50 border-b bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70'>
-          <div className='section flex items-center justify-between gap-4 py-4'>
+          <div className='section flex items-center justify-between gap-4'>
             <Link
               href='/'
               aria-label='EdTerm Home'
@@ -28,10 +28,10 @@ export default function RootLayout({
               <FallbackImage
                 src='/images/logo.png'
                 alt='EdTerm'
-                width={132}
-                height={32}
+                width={142}
+                height={42}
                 priority
-                className='h-8 w-auto'
+                className='h-20 w-52'
               />
             </Link>
             <HeaderNav />
@@ -46,7 +46,9 @@ export default function RootLayout({
               <p className='text-sm font-semibold text-black'>
                 EdTerm — Where Human Wisdom Meets AI Evolution.
               </p>
-              <p className='small text-brand-muted'>© {new Date().getFullYear()} EdTerm</p>
+              <p className='small text-brand-muted'>
+                © {new Date().getFullYear()} EdTerm
+              </p>
             </div>
             <div className='flex flex-col items-start gap-2 md:items-end'>
               <nav className='flex flex-wrap items-center gap-4'>
@@ -65,7 +67,10 @@ export default function RootLayout({
                 <Link href='/privacy' className='hover:underline'>
                   Privacy
                 </Link>
-                <a href='mailto:partners@edterm.com' className='hover:underline'>
+                <a
+                  href='mailto:partners@edterm.com'
+                  className='hover:underline'
+                >
                   Contact
                 </a>
               </nav>
